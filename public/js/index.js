@@ -4,6 +4,7 @@ import displayMap from './leaflet.js';
 import { login, logout } from './login.js';
 import { updateSettings } from './updateSettings.js';
 import { bookTour } from './stripe.js';
+import { showAlert } from './alerts.js';
 
 const map = document.getElementById('map');
 const loginform = document.getElementById('loginform');
@@ -11,6 +12,7 @@ const logoutBtn = document.querySelector('.nav__el--logout');
 const updateUserForm = document.querySelector('form[data-update-user]');
 const updatePasswordForm = document.querySelector('form[data-update-password]');
 const bookTourBtn = document.querySelector('[data-book-tour-button]');
+const alertMessage = document.querySelector('body').dataset.alert;
 
 // Display the map if it exists
 if (map) {
@@ -87,4 +89,8 @@ if (bookTourBtn) {
     await bookTour(tourId);
     bookTourBtn.innerText = 'Book tour';
   });
+}
+
+if (alertMessage) {
+  showAlert('success', alertMessage, 10);
 }

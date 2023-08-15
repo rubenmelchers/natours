@@ -19,7 +19,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   //   req.user.id
   // }&price=${tour.price}`;
   /** Correct success_url for actual PROD */
-  const successUrl = `${baseUrl}/my-tours`;
+  const successUrl = `${baseUrl}/my-tours?alert=booking_success`;
 
   const session = await stripe.checkout.sessions.create({
     //information about the Strip session
@@ -38,7 +38,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
           product_data: {
             name: `${tour.name} Tour`,
             description: tour.summary,
-            images: [`https://www.natours.dev/img/tours/${tour.imageCover}`]
+            images: [`${baseUrl}/img/tours/${tour.imageCover}`]
           },
           unit_amount: tour.price * 100 // amount needs to be in cents instead of dollars. Therefore multiply by 100
         },
