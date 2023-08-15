@@ -1,0 +1,26 @@
+doctype html 
+html
+    head
+        block head
+            title Natours | #{title}
+            meta(charset='UTF-8')
+            meta(name='viewport' content='width=device-width, initial-scale=1.0')
+            meta(http-equiv="X-UA-Compatible", content="IE=edge")
+            link(rel='stylesheet' href='/css/style.css')
+            link(rel='shortcut icon' type='image/png' href='/img/favicon.png')
+            link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
+            //- script(type='module' src='/js/bundled/index.js')
+
+    body
+        // Header
+        include _header
+
+        // Content
+        block content
+            h1 test - placeholder
+
+        //Footer
+        include _footer
+    
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js' integrity='sha512-xIPqqrfvUAc/Cspuj7Bq0UtHNo/5qkdyngx6Vwt+tmbvTLDszzXM0G6c91LXmGrRx8KEPulT+AfOOez+TeVylg==' crossorigin='anonymous' referrerpolicy='no-referrer')
+    script(src='/js/bundle.js')
