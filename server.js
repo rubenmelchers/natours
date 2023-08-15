@@ -42,3 +42,11 @@ process.on('unhandledRejection', err => {
     process.exit(1);
   });
 });
+
+/** Sigterm is a signal to cause a program to stop running. */
+process.on('SIGTERM', () => {
+  console.log('SIGTERM RECEIVED. Shutting down gracefully');
+  server.close(() => {
+    console.log('Process terminated');
+  });
+});

@@ -1,6 +1,6 @@
 const hpp = require('hpp');
 const path = require('path');
-// const cors = require('cors');
+const cors = require('cors');
 const morgan = require('morgan');
 const helmet = require('helmet');
 const xss = require('xss-clean');
@@ -29,7 +29,7 @@ const app = express();
 // Trust proxy
 // ----------------------------------------------
 
-// app.enable('trust proxy');
+app.enable('trust proxy');
 
 // ----------------------------------------------
 // PUG engine setup
@@ -43,8 +43,9 @@ app.set('views', path.join(__dirname, 'views'));
 // ----------------------------------------------
 
 // CORS policy
-// app.use(cors());
-// app.options('*', cors());
+app.use(cors());
+app.options('*', cors()); // set options request method. Plug in CORS so all HTTP requests are accepted
+// app.options('/api/v1/tours/:id', cors());
 
 // Further HELMET configuration for Content Security Policy (CSP)
 // Source: https://github.com/helmetjs/helmet
